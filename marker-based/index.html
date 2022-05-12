@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- aframe -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- gltf / glf animations -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!-- marker support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="orangJoget" src="./assets/orang-joget.gltf"></a-asset-item>
+        <a-asset-item id="kupu2" src="./assets/butterfly.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="hiro">
+        <a-entity scale="0.5 0.5 0.5" rotation="-40 -20 10" position="0.8 0 -0.6" gltf-model="#orangJoget" animation-mixer></a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="./assets/pattern-speaker.patt">
+        <a-entity rotation="-30 30 0" position="0 0 0" gltf-model="#kupu2" animation-mixer></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
